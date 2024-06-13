@@ -40,6 +40,7 @@ docker build -t boxtest_norenv -f Dockerfile_norenv .
 docker run boxtest_norenv
 ```
 
+Output
 ```
 >>> loading object foo from m1
 object foo size
