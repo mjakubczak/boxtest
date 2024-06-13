@@ -1,0 +1,10 @@
+FROM rocker/r-base:4.4.0
+
+RUN apt-get update
+
+RUN R -e 'install.packages(c("box","pryr"))'
+RUN mkdir /test
+WORKDIR /test
+
+COPY *.R /test
+CMD ["R", "-f", "main.R"]
