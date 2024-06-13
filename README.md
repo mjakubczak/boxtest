@@ -9,28 +9,32 @@ docker run boxtest_renv
 
 Output
 ```
->>> loading object foo from m1
-object foo size
+> box::use(. / m1[foo])
+> 
+> pryr::object_size(foo)
 188.04 kB
-
->>> loading object bar from m2
-object foo size
+> 
+> box::use(. / m2[bar])
+> 
+> pryr::object_size(foo)
 195.20 kB
-object bar size
+> pryr::object_size(bar)
 195.20 kB
-
-foo environment
+> 
+> ls(environment(foo))
 [1] "dummy" "foo"  
-bar environment
+> ls(environment(bar))
 [1] "bar"
+> 
+> box::use(. / m3[baz])
+> 
+> pryr::object_size(foo)
+203.02 kB
+> pryr::object_size(bar)
+203.02 kB
+> pryr::object_size(baz)
+203.02 kB
 
->>> loading object baz from m3
-object foo size
-203.02 kB
-object bar size
-203.02 kB
-object baz size
-203.02 kB
 ```
 
 ## Without renv
@@ -42,26 +46,29 @@ docker run boxtest_norenv
 
 Output
 ```
->>> loading object foo from m1
-object foo size
+> box::use(. / m1[foo])
+> 
+> pryr::object_size(foo)
 24.75 kB
-
->>> loading object bar from m2
-object foo size
+> 
+> box::use(. / m2[bar])
+> 
+> pryr::object_size(foo)
 24.75 kB
-object bar size
+> pryr::object_size(bar)
 22.64 kB
-
-foo environment
+> 
+> ls(environment(foo))
 [1] "dummy" "foo"  
-bar environment
+> ls(environment(bar))
 [1] "bar"
-
->>> loading object baz from m3
-object foo size
+> 
+> box::use(. / m3[baz])
+> 
+> pryr::object_size(foo)
 24.75 kB
-object bar size
+> pryr::object_size(bar)
 22.64 kB
-object baz size
+> pryr::object_size(baz)
 23.44 kB
 ```
